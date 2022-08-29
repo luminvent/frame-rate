@@ -1,6 +1,6 @@
 [package]
 name = "frame-rate"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["Marc-Antoine Arnaud <marc-antoine.arnaud@luminvent.com"]
 description = """
 library to manipulate video frame rate
