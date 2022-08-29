@@ -1,4 +1,4 @@
-use num_rational::Ratio;
+pub use num_rational::Ratio;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -88,8 +88,8 @@ impl From<SerializeRational> for Ratio<u32> {
 
 impl Serialize for FrameRate {
   fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-    where
-      S: Serializer,
+  where
+    S: Serializer,
   {
     SerializeRational::from(Ratio::<u32>::from(*self)).serialize(serializer)
   }
@@ -97,8 +97,8 @@ impl Serialize for FrameRate {
 
 impl<'de> Deserialize<'de> for FrameRate {
   fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-    where
-      D: Deserializer<'de>,
+  where
+    D: Deserializer<'de>,
   {
     Ok(Self::from(Ratio::<u32>::from(
       SerializeRational::deserialize(deserializer)?,
@@ -248,7 +248,7 @@ mod tests {
         "num": 24,
         "den": 1
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr24
     );
     assert_eq!(
@@ -256,7 +256,7 @@ mod tests {
         "num": 25,
         "den": 1
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr25
     );
     assert_eq!(
@@ -264,7 +264,7 @@ mod tests {
         "num": 30,
         "den": 1
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr30
     );
     assert_eq!(
@@ -272,7 +272,7 @@ mod tests {
         "num": 50,
         "den": 1
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr50
     );
     assert_eq!(
@@ -280,7 +280,7 @@ mod tests {
         "num": 60,
         "den": 1
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr60
     );
     assert_eq!(
@@ -288,7 +288,7 @@ mod tests {
         "num": 120,
         "den": 1
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr120
     );
     assert_eq!(
@@ -296,7 +296,7 @@ mod tests {
         "num": 24000,
         "den": 1001
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr23_97
     );
     assert_eq!(
@@ -304,7 +304,7 @@ mod tests {
         "num": 25000,
         "den": 1001
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr24_97
     );
     assert_eq!(
@@ -312,7 +312,7 @@ mod tests {
         "num": 30000,
         "den": 1001
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr29_97
     );
     assert_eq!(
@@ -320,7 +320,7 @@ mod tests {
         "num": 60000,
         "den": 1001
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr59_94
     );
     assert_eq!(
@@ -328,7 +328,7 @@ mod tests {
         "num": 2,
         "den": 3
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::FrCustom(Ratio::new(2, 3))
     );
     assert_eq!(
@@ -336,7 +336,7 @@ mod tests {
         "num": 6,
         "den": 9
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::FrCustom(Ratio::new(2, 3))
     );
     assert_eq!(
@@ -344,7 +344,7 @@ mod tests {
         "num": 200,
         "den": 4
       }))
-        .unwrap(),
+      .unwrap(),
       FrameRate::Fr50
     );
   }
