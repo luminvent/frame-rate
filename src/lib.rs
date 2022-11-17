@@ -1,7 +1,7 @@
 pub use num_rational::Ratio;
 use serde::{Deserialize, Deserializer, Serialize, Serializer};
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum FrameRate {
   _24_00,
   _25_00,
@@ -159,84 +159,84 @@ mod tests {
   #[test]
   fn serialize() {
     assert_eq!(
-      serde_json::to_value(&FrameRate::_24_00).unwrap(),
+      serde_json::to_value(FrameRate::_24_00).unwrap(),
       serde_json::json!({
         "num": 24,
         "den": 1
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_25_00).unwrap(),
+      serde_json::to_value(FrameRate::_25_00).unwrap(),
       serde_json::json!({
         "num": 25,
         "den": 1
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_30_00).unwrap(),
+      serde_json::to_value(FrameRate::_30_00).unwrap(),
       serde_json::json!({
         "num": 30,
         "den": 1
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_50_00).unwrap(),
+      serde_json::to_value(FrameRate::_50_00).unwrap(),
       serde_json::json!({
         "num": 50,
         "den": 1
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_60_00).unwrap(),
+      serde_json::to_value(FrameRate::_60_00).unwrap(),
       serde_json::json!({
         "num": 60,
         "den": 1
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_120_00).unwrap(),
+      serde_json::to_value(FrameRate::_120_00).unwrap(),
       serde_json::json!({
         "num": 120,
         "den": 1
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_23_97).unwrap(),
+      serde_json::to_value(FrameRate::_23_97).unwrap(),
       serde_json::json!({
         "num": 24000,
         "den": 1001
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_24_97).unwrap(),
+      serde_json::to_value(FrameRate::_24_97).unwrap(),
       serde_json::json!({
         "num": 25000,
         "den": 1001
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_29_97).unwrap(),
+      serde_json::to_value(FrameRate::_29_97).unwrap(),
       serde_json::json!({
         "num": 30000,
         "den": 1001
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::_59_94).unwrap(),
+      serde_json::to_value(FrameRate::_59_94).unwrap(),
       serde_json::json!({
         "num": 60000,
         "den": 1001
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::FrCustom(Ratio::new(2, 3))).unwrap(),
+      serde_json::to_value(FrameRate::FrCustom(Ratio::new(2, 3))).unwrap(),
       serde_json::json!({
         "num": 2,
         "den": 3
       })
     );
     assert_eq!(
-      serde_json::to_value(&FrameRate::FrCustom(Ratio::new(6, 9))).unwrap(),
+      serde_json::to_value(FrameRate::FrCustom(Ratio::new(6, 9))).unwrap(),
       serde_json::json!({
         "num": 2,
         "den": 3
