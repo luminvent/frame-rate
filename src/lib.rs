@@ -16,6 +16,18 @@ pub enum FrameRate {
   FrCustom(Ratio<u32>),
 }
 
+impl utoipa::ToSchema for FrameRate {
+  fn name() -> std::borrow::Cow<'static, str> {
+    std::borrow::Cow::Borrowed("FrameRate")
+  }
+}
+
+impl utoipa::PartialSchema for FrameRate {
+  fn schema() -> utoipa::openapi::RefOr<utoipa::openapi::schema::Schema> {
+    utoipa::openapi::ObjectBuilder::new().into()
+  }
+}
+
 impl FrameRate {
   pub fn new(num: u32, den: u32) -> Self {
     Ratio::new(num, den).into()
