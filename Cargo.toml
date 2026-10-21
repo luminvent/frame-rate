@@ -1,6 +1,6 @@
 [package]
 name = "frame-rate"
-version = "0.2.2"
+version = "0.3.0"
 authors = ["Marc-Antoine Arnaud <marc-antoine.arnaud@luminvent.com>"]
 description = "Library to manipulate video frame rate"
 repository = "https://github.com/media-io/frame-rate"
